@@ -1,0 +1,316 @@
+<html>
+    <head>
+        <title>Reading values</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/expstyle.css">      
+     <!---------MathJax------------------->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <!------------calculator----------------------------------------->
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+      <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script-->
+       <script src="js/jquery.knob.min.js"></script>
+        <script src="js/exp6knobs.js"></script>
+        <script src="js/exp6axis.js"></script>
+        <script src="js/sinewave.js"></script>
+        <script src="js/exp6.js"></script>
+         <script src="js/exp6both.js"></script>
+          <script src="js/exp6gnd.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    </head>
+    
+    <body style="width:95em"> 
+        
+      <div id="se-pre-con"><div class="load">
+		<p>You can read the values of the experiment</p>
+		<img src="images/load.gif"></img>
+		<p>Please wait...</p></div>
+	</div>
+         <div class="wholebody" id="exp">
+            <div id="exph">
+                <h1 id="expm">Measurement of Losses in Plastic Fiber</h1>
+               
+                </div>
+                <script>
+                    var t=0;
+                        $(window).load(function() {
+                        // Animate loader off screen
+                        
+                            $("#se-pre-con").animate({
+                                top: "-200%"
+                            }, 4000);t=1;
+                        });
+                    </script>  
+
+		<div class="instruct">
+            <a id="myBtn" href="#">INSTRUCTIONS</a>
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="close">&times;</span>
+                            <h2>Instructions</h2>
+                        </div>
+                        <div class="modal-body">
+                            <center><img src="images/setup.PNG" alt="setup" width="850" height="330"></center>
+                            <p>
+                                <ol type="1" style="font-size:17px;">
+                                    <li>Click on <b style="color:red">'Power'</b> button to start the experiment.</li>
+                                    <li>Double click on <b style="color:#2B4D9D">'SineWave'</b> button to generate input waveform. </li>
+                                    <li>Click on <b style="color:#2B4D9D">'Oscilloscope'</b> button to get the output waveform. </li>
+                                    <li>Vary the Amplitude, Frequency, volt/div  using the controllers.</li> 
+                                    <li>Click on <b style="color:#2B4D9D">'Dual'</b> button to observe both the waveforms.</li>
+                                    <li>Channel 1 shows the input waveform, Channel 2 shows the output waveform. </li>
+                                    <li>Click on <b style="color:#2B4D9D">'Add'</b> button to read input values into table.</li>
+                                    <li>Click on <b style="color:#2B4D9D">'PLOT'</b> button to plot the graph from table readings.</li>
+                </ol>  </p>
+                <br>
+                        <label style="color:red;font-weight: bold;">Note 1: </label><b>You can read only one value for each select option.</b><br>
+                        <label style="color:red;font-weight: bold;">Note 2: </label><b>You cannot change the amplitude in the middle of reading values into table.</b>
+                        </div>
+                        <div class="modal-footer">
+                            <br>
+                        </div>
+                </div>
+    </div></div>
+             
+        
+
+ <div id="grpwrap" >
+                
+                <div style="position:absolute; font-size:20px; top:-1px;left:0px;  height:25px;background-color:#19318F;  width:459px;font-weight: bold;text-align:center;"><p style="padding-right:370px;color:white;display:contents"> <b> OSCILLOSCOPE</b></p>
+                </div>  
+               
+                    <div class="canvas2d-view" id="canvas2d-view" >
+
+                        <center><canvas id="mycanvas" width="430" height="350" style="border:1px solid black;">
+                            </canvas>  </center>
+                    </div>
+                    <!--  <output id="out"></output>-->
+                    <div class="lowerleftsection">
+                         
+                        <input type="button" id="chhn1" value="Channel 1" onclick="chnlo()" disabled="true" />
+                        <input type="button" id="chhn2" value="Channel 2" onclick="chnlt()" disabled="true" />
+                        <input type="button" id="grnd" value="Ground" onclick="grnds()" disabled="true"/>
+                        <input type="button" id="dual" value="Dual" onclick="bthd()"  disabled="true"/>
+
+                        <input type="button" id="onff" onclick="mainswt()" value="Power:Off" />
+						
+						
+                        <div id="knob-container-fng">
+                            <!------frequency-knob-container------------>
+                            <div id="frequency-knob-container-fng">
+                                <input type="text" id="fq-knob-fng"  value="1000" readOnly=false oninput="freqfng()">
+                                <label>Frequency(Hz)</label>
+                            </div>
+
+                            <!-----------amplitude-knob-container---------------->
+                            <div id="amplitude-knob-container-fng">
+                                <input type="text" id="amp-knob-fng" readOnly=false  value="1" oninput="ampfng()">
+                                <label>Amplitude(Volt)</label>
+                            </div>
+							<!-- select length and add button are added in knob-container-container-->
+							<div style="position: absolute;left: 10em;top: 10.5em;width: 19em;">
+								<b>Select cable</b>&nbsp;&nbsp;&nbsp;
+								<select id="length-knob-container" onchange="updateTable()">
+									<option value=6>Optical cable(650nm)</option>
+									<option value=8>Optical cable(850nm)</option>
+			</select></div>
+							
+							<input  type="button" id="add" onclick="insert()" value="Add"/>
+                        </div>  <!--------------- end of .knob-container-fng----------------------->
+
+                    </div><!--------------- end of .lowerleftsection----------------------->
+        
+    </div><!--------------- end of .graphSection----------------------->
+            
+                    <div id="circuitsection">
+                        <div id="crtsec"><p style="padding-right:390px;color:white;display: contents"> <b> CIRCUIT </b></p></div>
+
+                <div id="circuit">
+                       <img  src ="images/setup.PNG" style="width:90%;height:98%;position:absolute;margin:auto;display: block;" />   
+                       <figcaption id="figcap">Setup for Measurement of Data Rate for Digital Optical Link</figcaption> 
+                        <input type="button" id="sinecrv" value="SineWave" disabled onclick="chnlo()"  />
+                        <input type="button" id="rectifiedop" value="Oscilloscope" onclick="drawhlfrectifier()" disabled=true  />
+
+                    </div><!--------------- end of .circuit----------------------->
+                    </div> <!--------------- end of .circuitSection----------------------->
+
+                    <div class="but">
+                        <button class="button" onclick="plot()">PLOT</button>
+                        <button class="button" onclick="window.location.reload()">RESET</button>
+                        <button class="button" id="button1" onclick="printf()">PRINT</button><br>
+                    </div>
+
+ <div id="controller" >
+      <div id="cntrlr"><p style="padding-right:370px;color:white;display: contents;"><b>CONTROLS</b></p></div>
+               
+                    <div class="middlerightmiddle">
+                        <div id="knob-container-amp">
+                            <!-----------amplitude-knob-container1(volt/div)---------------->
+                           
+                            <div id="amplitude-knob-container1">
+                                <input type="text" id="amp-knob1" value="4" readOnly=false oninput="amp1pdiv()">
+                                <label>Volt(V)/div</label><br>
+                                
+                            </div>
+                             
+                            <!-----------amplitude-knob-container2(volt/div)-------------->
+                            <div id="amplitude-knob-container2">
+                                <input type="text" id="amp-knob2"  value="4" readOnly=false oninput="amp2pdiv()" >
+                                <label>Volt(V)/div</label>
+                            </div>
+                        </div><!--------------- end of .knob-container-amp----------------------->
+
+                        <input type="range" orient="vertical" id="positiony1" min="-6" max="6" value="1" oninput="posiy1chnge()"  style="cursor:pointer;">  <label id="positnlabely1">Position-Y</label><label id="positnlabelch1">Channel 1</label>
+                        <input type="range" orient="vertical" id="positiony2" min="-6" max="6"  value="1" oninput="posiy2chnge()" style="cursor:pointer;">  <label id="positnlabely2">Position-Y</label><label id="positnlabelch2">Channel 2</label>
+                        <div class="middlerightsectiondivide"></div>
+
+                    </div> <!--------------- end of .middlerightmiddle----------------------->
+                   <div class="middlerightupper">
+                        <input  type="range"  id="positionx" min="-360" max="360" step="90"  value="0" oninput="posix2chnge()"  style="cursor:pointer;">
+                        <label id="positnlabelx">Position-X</label>
+
+                        <!-- -----knob---------- -->
+                        <div id="knob-container">
+                            <!------frequency-knob-container(time(ms)/div)------------>
+                            <div id="frequency-knob-container">
+                                <input type="text" id="fq-knob"  value="0.1"  readOnly=false oninput="timepdiv()">
+                                <label>Time(ms)/div</label>
+                            </div>
+                        </div><!--------------- end of .knob-container----------------------->
+
+                    </div> <!--------------- end of .middlerightupper--------------------->
+                </div>  <!--------------- end of .controllSection----------------------->
+                <!--------------- end of .calcln----------------------->
+				<div class="calc">
+			<table  cellpadding="5" border="2 solid black" id="table">
+				<tr style="color:white;background-color:#19318F;height:25px"><th colspan=6>EXPERIMENTAL READINGS</th></tr>
+				<tr bgcolor="#ffffff" class="font">
+					<th align=center rowspan=2>Sl.No</th>
+					<th align=center rowspan=2>Wavelength</th>
+					<th align=center rowspan=2>Input Voltage (V)</th>
+					<th align=center colspan=2>Output Voltage (V)</th>
+				</tr>
+				<tr bgcolor="#ffffff" class="font">
+					<th align=center>for 1m length</th>
+					<th align=center>for 5m length</th>
+				</tr>
+			</table>
+			
+        </div>
+         </div>
+       <!--------------- end of .wholebody----------------------->
+	
+       <script>
+	
+           $('canvas').data('readonly', false);
+		   
+			var temp=0;
+			var count=1;
+			var i=3;
+			var l3=[];
+			var f,x1,x2,flag=0;
+
+			function updateTable() {
+				if(i>2) for(var q=3;q<i;q++) document.getElementById(q).remove();
+				i=3;count=1;l3=[];
+			}
+			function insert() {
+				var bttn=document.getElementById('onff').value;
+				if(bttn == "Power:Off"){
+					alert("Could not plot if power is off\nTo add please turn on the system");
+				}
+				else{
+					var x=parseFloat(document.getElementById("amp-knob-fng").value).toFixed(2);
+					var y=document.getElementById('length-knob-container').value;
+					if(count>5){
+						alert("The values you read are enough.\nPlease calculate the result.");
+					}
+					else {
+					  /*if(f==1) if(x!=w) {alert("You can't change amplitude in the middle of the experiment");exit(0);}*/
+					   var l=document.getElementById("amp-knob-fng").value;
+						flag=0;
+						for(var d=0;d<l3.length;d++) if(l==l3[d]){flag=1;break;}
+						if(!flag){
+							l3.push(l);
+							var tab=document.getElementById('table');
+							var row=tab.insertRow(i);
+							row.id=i++;
+							w=x;
+							f=1;
+							var cable=document.getElementById("length-knob-container").value;
+							row.setAttribute("bgcolor","#ffffff");
+							row.setAttribute("align","center");
+							var cell1=row.insertCell(0);
+							var cell2=row.insertCell(1);
+							var cell3=row.insertCell(2); 
+							var cell4=row.insertCell(3);
+							var cell5=row.insertCell(4);
+							cell1.innerHTML=count++;
+							if(y==6) {x1=(x-0.22).toFixed(2);x2=(x-0.27).toFixed(2);y=650;}
+							if(y==8) {x1=(x-0.16).toFixed(2);x2=(x-0.24).toFixed(1);y=850;}
+							cell2.innerHTML=y;
+							cell3.innerHTML=x;
+							cell4.innerHTML=x1;
+							cell5.innerHTML=x2;
+						}else alert("You can't read the same value more than once\nPlease change the input readings and add again.");
+					}
+				}
+			}	
+			
+			function printf() {
+				if(t) document.getElementById("se-pre-con").remove();
+				t=0;
+				window.print();
+			}
+           /* document.querySelector('#button1').addEventListener('click', function() {
+        html2canvas(document.querySelector('.calc'), {
+            onrendered: function(canvas) {
+                // document.body.appendChild(canvas);
+              return Canvas2Image.saveAsPNG(canvas);
+            }
+		});
+    });*/
+			
+            </script>
+          <script>
+            var modal = document.getElementById("myModal");
+    
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+    
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+    
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+    
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+    
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                        modal.style.display = "none";
+                }
+            }
+        </script>
+        
+        <footer class="main-footer">
+            <div align="center" style="font-size: 16px;color:white;margin:auto">&copy; 2023 Virtual Labs, IIT Roorkee<!-- Institute Name --> </div>
+          </footer>
+        
+         <!--------------------------------- calculator --------------------------------------------->
+               
+    </body>
+</html>
