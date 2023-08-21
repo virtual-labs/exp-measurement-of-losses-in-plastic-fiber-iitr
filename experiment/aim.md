@@ -1,1 +1,2 @@
-### Aim of the experiment
+
+####  Measurement of Propagation or Attenuation Loss in the optical fiber.
