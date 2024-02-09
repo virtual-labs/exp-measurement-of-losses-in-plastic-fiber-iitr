@@ -133,7 +133,7 @@
                         <div id="crtsec"><p style="padding-right:390px;color:white;display: contents"> <b> CIRCUIT </b></p></div>
 
                 <div id="circuit">
-                       <img  src ="images/setup.PNG" style="width:90%;height:98%;position:absolute;margin:auto;display: block;" />   
+                       <img  src ="images/setup.PNG" style="width:90%;height:95%;position:absolute;margin:auto;display: block;" />   
                        <figcaption id="figcap">Setup for Measurement of Data Rate for Digital Optical Link</figcaption> 
                         <input type="button" id="sinecrv" value="SineWave" disabled onclick="chnlo()"  />
                         <input type="button" id="rectifiedop" value="Oscilloscope" onclick="drawhlfrectifier()" disabled=true  />
@@ -192,7 +192,7 @@
 			<table  cellpadding="5" border="2 solid black" id="table">
 				<tr style="color:white;background-color:#19318F;height:25px"><th colspan=6>EXPERIMENTAL READINGS</th></tr>
 				<tr bgcolor="#ffffff" class="font">
-					<th align=center rowspan=2>Sl.No</th>
+					<th align=center rowspan=2>S.No</th>
 					<th align=center rowspan=2>Wavelength</th>
 					<th align=center rowspan=2>Input Voltage (V)</th>
 					<th align=center colspan=2>Output Voltage (V)</th>
@@ -209,6 +209,21 @@
 	
        <script>
 	
+    function alert1(icon,title,text)
+    {
+        Swal.fire({
+            backdrop:false,
+           target: '#exp',
+           position:'center',
+            customClass: {
+              container: 'position-absolute',
+              popup:"swal2-popup"
+            },
+            title:title,
+            html: text,
+           icon:icon,
+            });
+    }
            $('canvas').data('readonly', false);
 		   
 			var temp=0;
@@ -224,13 +239,14 @@
 			function insert() {
 				var bttn=document.getElementById('onff').value;
 				if(bttn == "Power:Off"){
-					alert("Could not plot if power is off\nTo add please turn on the system");
+					alert1('error','Oops..POWER OFF','Could not plot if power is off.<br>To add please turn on the system.');
 				}
 				else{
 					var x=parseFloat(document.getElementById("amp-knob-fng").value).toFixed(2);
 					var y=document.getElementById('length-knob-container').value;
 					if(count>5){
-						alert("The values you read are enough.\nPlease calculate the result.");
+                        alert1('warning','','The values you read are enough.<br>Please calculate the result.');
+					
 					}
 					else {
 					  /*if(f==1) if(x!=w) {alert("You can't change amplitude in the middle of the experiment");exit(0);}*/
@@ -259,7 +275,7 @@
 							cell3.innerHTML=x;
 							cell4.innerHTML=x1;
 							cell5.innerHTML=x2;
-						}else alert("You can't read the same value more than once\nPlease change the input readings and add again.");
+						}else alert1('error','Oops..Duplicate Value','You can\'t read the same value more than once.<br>Please change the input readings and add again.');
 					}
 				}
 			}	
@@ -307,7 +323,7 @@
         </script>
         
         <footer class="main-footer">
-            <div align="center" style="font-size: 16px;color:white;margin:auto">&copy; 2023 Virtual Labs, IIT Roorkee<!-- Institute Name --> </div>
+            <div align="center" style="font-size: 16px;color:white;margin:auto;font-weight: bold;">&copy; 2023 Virtual Labs, IIT Roorkee<!-- Institute Name --> </div>
           </footer>
         
          <!--------------------------------- calculator --------------------------------------------->

@@ -59,11 +59,11 @@
 		<!-- Division for buttons-->
 		
 		<div class="top">
-			<form action="exp.html" method="post" style="width:100%;text-align:right">
+			<div style="width:100%;text-align:right">
 				<div class="button"><input class="b1" type="button" id="check"  value="CHECK" ></input></div>
-				<div class="button"><input class="b3" type="submit" id="start"  style="cursor:not-allowed" value="START" disabled></input></div>
+				<div class="button"><input class="b3" type="submit" id="start"  style="cursor:not-allowed" value="START" disabled onclick="location.href='exp.html';"></input></div>
 				<div class="button"><input class="b2" type="button" onclick="location.reload()" value="RESET"></input></div>
-			</form>
+			</div>
 		</div>
 		
 	</div>
@@ -79,7 +79,7 @@
 							<center><img src="images/setup.PNG" alt="setup" width=750 height=300></img></center>
 							<p>
 								<ol type="1" style="font-size:20px;">
-									<li>Connect the components as mentioned below:<br>(1-3)(2-4)(5-6)(7-9)(8-10)</li>
+									<li>Connect the components as mentioned below:<br>(1-3)(2-4)(5-6)(7-10)(8-9)</li>
 									<li>Click on <img src="images/check.png" width=53 height=20></img> button to check the connections.</li>
 									<li>If connected wrong, click on the wrong connection and drag the connection and connect it in right position.<br>Else if connections are right please click <img src="images/start.PNG" width=53 height=20></img> button to read the values for experiment.</li></ol></p>
 							<label style="color:red;font-weight: bold;">Note: </label><b>Do not start before properly connecting the wires.</b>
@@ -119,6 +119,6 @@
 	<script src="js/jsplumb.js"></script>
 	<script src="js/demo.js"></script>
 	<footer class="main-footer">
-		<div align="center" style="font-size: 16px;color:white;margin:auto">© 2023 Virtual Labs, IIT Roorkee<!-- Institute Name --> </div>
+		<div align="center" style="font-size: 16px;color:white;margin:auto;font-weight: bold;">© 2023 Virtual Labs, IIT Roorkee<!-- Institute Name --> </div>
 	  </footer>
 </body>	
