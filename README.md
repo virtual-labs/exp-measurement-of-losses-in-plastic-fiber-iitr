@@ -11,8 +11,6 @@
 
 Measurement of Propagation or Attenuation Loss in the optical fiber.
 
-Objectives:-  Measurement of Propagation or Attenuation Loss in the optical fiber.
-
 <b>Name of Developer | <b> Prof. RS Anand
 :--|:--|
 <b> Institute | <b> IIT Roorkee
