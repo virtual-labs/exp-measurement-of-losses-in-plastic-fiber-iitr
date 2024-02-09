@@ -1,0 +1,7 @@
+[{"question":"The mechanical splice attenuation loss is _____ dB or less","answers":{"a":0.6,"b":0.1,"c":0.2,"d":0.5},"correctAnswer":"b"},
+{"question":"What is the average loss in fiber splice?","answers":{"a":"0.15dB","b":"0.012dB","c":"0.13dB","d":"0.14dB"},"correctAnswer":"a"},
+{"question":"The dominant loss mechanisms in silica fiber are","answers":{"a":"Absorption and radiation losses","b":"Coupling and radiation losses","c":"Absorption and Rayleigh scattering","d":"Radiation and modal dispersion"},"correctAnswer":"c"},
+{"question":"When light strikes a flat polished end of a fiber, the fiber loss produced can be reduced by","answers":{"a":"Splicing","b":"Antireflection coating","c":"Insulation jacket","d":"All the above"},"correctAnswer":"b"},
+{"question":"When light strikes a flat polished end of a fiber, it produces a loss of","answers":{"a":"9%","b":"2%","c":"5%","d":"4%"},"correctAnswer":"d"}]
+
+
