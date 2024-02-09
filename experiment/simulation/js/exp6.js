@@ -70,7 +70,20 @@ if(flag==3){
 //----------------------------------------code for drawing rectify output--------------------------------------------------//
 function drawhlfrectifier() {
 	var bttn = document.getElementById('onff').value;
-    if (bttn == "Power:Off") {alert("Please turn on to draw graph");}
+    if (bttn == "Power:Off") {
+        Swal.fire({
+            backdrop:false,
+           target: '#exp',
+           position:'center',
+            customClass: {
+              container: 'position-absolute',
+              popup:"swal2-popup"
+            },
+            title:'POWER OFF',
+            html: 'Please turn on to draw graph',
+           icon:'info',
+            });
+          }
 	else{
     canvas = document.getElementById("mycanvas");
     if (null == canvas || !canvas.getContext)
