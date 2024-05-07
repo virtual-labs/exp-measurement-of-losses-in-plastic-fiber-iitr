@@ -330,10 +330,7 @@ input[type=button]:disabled {
 	z-index:1;
 }
 /********************************************    knob on right side   **********************************/
-#knob-container{
-    /* position: absolute;
-       top:2%;*/
-}
+
 #frequency-knob-container {
   
     position:relative;
@@ -351,10 +348,7 @@ input[type=button]:disabled {
     font-style: italic;
 }
 /*************************    knob for amplitude   **********************************/
-#knob-container-amp{
-    /* position: absolute;
-       top:2%;*/
-}
+
 #amplitude-knob-container1 {
 
     position:relative;
@@ -386,10 +380,7 @@ input[type=button]:disabled {
 }
 
 /*************************    knob for function Generator   **********************************/
-#knob-container-fng{
-    /* position: absolute;
-       top:2%;*/
-}
+
 #frequency-knob-container-fng {
    
     position:relative;
@@ -435,12 +426,9 @@ input[type=button]:disabled {
     font-style: italic;
 }
 /*---------------------------vertical range slider-------------------------*/
-input[type=range][orient=vertical]
-{
 
-}
 #positiony1{
-    -webkit-appearance: slider-vertical; /* WebKit */
+    appearance: slider-vertical; /* WebKit */
     width: 8px;
     height: 120px;
     padding: 0 5px;
@@ -462,7 +450,7 @@ input[type=range][orient=vertical]
     right:175px;
 }
 #positiony2{
-    -webkit-appearance: slider-vertical; /* WebKit */
+    appearance: slider-vertical; /* WebKit */
     width: 8px;
     height: 120px;
     padding: 0 5px;
@@ -495,12 +483,12 @@ input[type=range][orient=vertical]
     left:50px;
 }
 #resistor{
-   -webkit-appearance: slider-vertical; /* WebKit */
- position:absolute;
- right:150px;
- top:170px;
- height:90px;
- cursor:pointer;
+    appearance: slider-vertical; /* WebKit */
+    position:absolute;
+    right:150px;
+    top:170px;
+    height:90px;
+    cursor:pointer;
 }
 #restr{
     position:absolute;
