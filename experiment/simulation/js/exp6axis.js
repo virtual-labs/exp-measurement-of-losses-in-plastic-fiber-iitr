@@ -22,7 +22,7 @@ function mainswt() {
         document.getElementById("grnd").disabled = true;
         
         document.getElementById("sinecrv").disabled = false;
-		document.getElementById("add").disabled = false;
+		
         document.getElementById("rectifiedop").disabled = true;
 		drawAxis();
         drawGrid(ctx);

@@ -86,6 +86,7 @@ function drawhlfrectifier() {
           }
 	else{
     canvas = document.getElementById("mycanvas");
+    document.getElementById("add").disabled = false;
     if (null == canvas || !canvas.getContext)
         return;
     ctx = canvas.getContext("2d");
