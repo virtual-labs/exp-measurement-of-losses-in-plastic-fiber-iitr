@@ -4,7 +4,7 @@ body,html {margin:0; height:71.5em;padding:0;}
 .clearfix { clear:both; }
 .wholebody {
     width: 80em;
-    height: 70em;
+    height: 67em;
     background-color: white;
     position: relative;
     top: 0em;
@@ -93,7 +93,7 @@ body,html {margin:0; height:71.5em;padding:0;}
           }
 .calc{
 		position:absolute;
-		right:20px;
+		right:85px;
 		top:510px;
 	}
 .graph {
@@ -119,10 +119,10 @@ body,html {margin:0; height:71.5em;padding:0;}
     position: inherit;
     z-index: 11;
     padding-top: 200px;
-    left: -1185px;
-    top: -45px;
-    width:84em;
-    height:35em;
+    left: -1132px;
+    top: -184px;
+    width:81em;
+    height:63.5em;
     background-color: rgba(255, 255, 255, 0);
     backdrop-filter:  blur(9.2px);
    -webkit-backdrop-filter: blur(9.2px);
@@ -225,7 +225,7 @@ body,html {margin:0; height:71.5em;padding:0;}
 /*---------------------------------------------------button css--------------------------------------------*/
 .but{
     top:28em;
-    left:32em;
+    left:30em;
     position: absolute;
     display:flex;
     width:50em;
@@ -253,6 +253,12 @@ button{
 background: white;
 cursor:pointer;
 }
+
+.button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
 input[type=button]{
     width:75px;
     cursor: pointer;
@@ -330,7 +336,10 @@ input[type=button]:disabled {
 	z-index:1;
 }
 /********************************************    knob on right side   **********************************/
-
+#knob-container{
+    /* position: absolute;
+       top:2%;*/
+}
 #frequency-knob-container {
   
     position:relative;
@@ -348,7 +357,10 @@ input[type=button]:disabled {
     font-style: italic;
 }
 /*************************    knob for amplitude   **********************************/
-
+#knob-container-amp{
+    /* position: absolute;
+       top:2%;*/
+}
 #amplitude-knob-container1 {
 
     position:relative;
@@ -380,7 +392,10 @@ input[type=button]:disabled {
 }
 
 /*************************    knob for function Generator   **********************************/
-
+#knob-container-fng{
+    /* position: absolute;
+       top:2%;*/
+}
 #frequency-knob-container-fng {
    
     position:relative;
@@ -426,9 +441,12 @@ input[type=button]:disabled {
     font-style: italic;
 }
 /*---------------------------vertical range slider-------------------------*/
+input[type=range][orient=vertical]
+{
 
+}
 #positiony1{
-    appearance: slider-vertical; /* WebKit */
+    -webkit-appearance: slider-vertical; /* WebKit */
     width: 8px;
     height: 120px;
     padding: 0 5px;
@@ -450,7 +468,7 @@ input[type=button]:disabled {
     right:175px;
 }
 #positiony2{
-    appearance: slider-vertical; /* WebKit */
+    -webkit-appearance: slider-vertical; /* WebKit */
     width: 8px;
     height: 120px;
     padding: 0 5px;
@@ -483,12 +501,12 @@ input[type=button]:disabled {
     left:50px;
 }
 #resistor{
-    appearance: slider-vertical; /* WebKit */
-    position:absolute;
-    right:150px;
-    top:170px;
-    height:90px;
-    cursor:pointer;
+   -webkit-appearance: slider-vertical; /* WebKit */
+ position:absolute;
+ right:150px;
+ top:170px;
+ height:90px;
+ cursor:pointer;
 }
 #restr{
     position:absolute;
@@ -533,9 +551,30 @@ input[type=button]:disabled {
 .main-footer
 {
     position:absolute;
-    width: 80.5em;
+    width: 80.3em;
     height:25px;
     background-image: linear-gradient(#2B4D9D,#091069 );
-  top:70.5em;left: 0.3;
+  top:65.6em;left: 0.3;
   text-align: center;display: grid;
 }       
+
+
+ /* Define the keyframes for the blinking effect */
+ @keyframes blink {
+    0% {
+        border-color: blue;
+    }
+    50% {
+        border-color: black;
+    }
+    100% {
+        border-color: blue;
+    }
+  }
+  
+  /* Apply the blinking animation to the cell */
+  .blink {
+    border: 2px solid blue; /* Initial border style */
+    animation: blink 1s infinite; /* Apply animation */
+  }
+  
