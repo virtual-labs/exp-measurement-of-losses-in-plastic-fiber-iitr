@@ -1,0 +1,5 @@
+[{"question":"Stepped index operation is not a possible cause of optical fiber loss. State True/False.","answers":{"a":"True","b":"False"},"correctAnswer":"a"},
+{"question":"SONET stands for","answers":{"a":"System Optical Network","b":"Synchronous Optical Network","c":"Silica Optic Network","d":"System Optical Fiber Net"},"correctAnswer":"b"},
+{"question":"Which of the following is a disadvantage for plastic fiber optics?","answers":{"a":"No loss","b":"Higher losses","c":"Less loss","d":"None of the above"},"correctAnswer":"b"},
+{"question":"Under normal condition, a single fiber should not be used for a two-way communication mainly because of","answers":{"a":"Loss","b":"Fading","c":"Attenuation","d":"Noise"},"correctAnswer":"d"},
+{"question":"Splicing fibers means Fusion. State True/False?","answers":{"a":"True","b":"False"},"correctAnswer":"b"}]
