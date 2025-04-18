@@ -322,7 +322,7 @@
 							cell4.innerHTML=x1;
 							cell5.innerHTML=x2;
                             
-                            if(count==11)
+                            if(count==6)
                         {
                             alert1('info','','The values you read are enough.<br>Please calculate the loss and enter the values into the table.');
                         document.getElementById("loss").disabled=false;
@@ -380,6 +380,7 @@
                     else if(Number(cell5.innerText) !== loss2)
                     { 
                         cell5.classList.remove('blink');
+                       // cell5.style.borderColor='red';
                         cell5.style.border='2px solid red';
                         isValid = false;   
                     }
